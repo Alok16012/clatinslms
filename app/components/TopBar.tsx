@@ -5,6 +5,7 @@ import ClatLogo from "./ClatLogo";
 interface TopBarProps {
   courseName?: string;
   onProfileClick?: () => void;
+  onLogoClick?: () => void;
 }
 
 const BellSvg = () => (
@@ -27,7 +28,7 @@ const UserSvg = () => (
   </svg>
 );
 
-export default function TopBar({ courseName = "CLAT 2026", onProfileClick }: TopBarProps) {
+export default function TopBar({ courseName = "CLAT 2026", onProfileClick, onLogoClick }: TopBarProps) {
   return (
     <div style={{
       background: "white",
@@ -40,7 +41,9 @@ export default function TopBar({ courseName = "CLAT 2026", onProfileClick }: Top
     }}>
       {/* Row 1 — Logo + Icons */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
-        <ClatLogo size="sm" showTagline={false} />
+        <div onClick={onLogoClick} style={{ cursor: onLogoClick ? "pointer" : "default" }}>
+          <ClatLogo size="sm" showTagline={false} />
+        </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           {[

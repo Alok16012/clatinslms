@@ -82,7 +82,7 @@ export default function App() {
         )}
 
         {/* Top Bar — always visible */}
-        <TopBar courseName="CLAT 2026" onProfileClick={() => setShowProfile(true)} />
+        <TopBar courseName="CLAT 2026" onProfileClick={() => setShowProfile(true)} onLogoClick={() => { setDetailPage(null); setActiveScreen("home"); }} />
 
         {/* Scrollable content */}
         <div
