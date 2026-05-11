@@ -40,7 +40,7 @@ export default function TopBar({ courseName = "CLAT 2026", onProfileClick }: Top
     }}>
       {/* Row 1 — Logo + Icons */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
-        <ClatLogo size="sm" showTagline={false} onWhite={true} />
+        <ClatLogo size="sm" showTagline={false} />
 
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           {[

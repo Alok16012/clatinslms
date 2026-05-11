@@ -37,7 +37,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
 
         {/* Logo on dark background */}
         <div style={{ background:"white", borderRadius:20, padding:"14px 28px", marginBottom:20, boxShadow:"0 8px 28px rgba(0,0,0,0.25)" }}>
-          <ClatLogo size="md" showTagline={true} onWhite={true} />
+          <ClatLogo size="md" showTagline={true} />
         </div>
 
         <p style={{ margin:"0 0 6px", color:"rgba(255,255,255,0.9)", fontSize:15, fontWeight:600, textAlign:"center" }}>
