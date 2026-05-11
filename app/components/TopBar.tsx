@@ -1,5 +1,7 @@
 "use client";
 
+import ClatLogo from "./ClatLogo";
+
 interface TopBarProps {
   courseName?: string;
   onProfileClick?: () => void;
@@ -25,36 +27,21 @@ const UserSvg = () => (
   </svg>
 );
 
-const PlayArrow = () => (
-  <svg width="12" height="12" viewBox="0 0 24 24" fill="#1B2B6B"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-);
-
 export default function TopBar({ courseName = "CLAT 2026", onProfileClick }: TopBarProps) {
   return (
     <div style={{
       background: "white",
-      padding: "12px 16px 10px",
+      padding: "10px 16px 10px",
       borderBottom: "1px solid #F0F0F5",
       position: "sticky",
       top: 0,
       zIndex: 40,
-      boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+      boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
     }}>
       {/* Row 1 — Logo + Icons */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
-        {/* CLATians Logo */}
-        <div style={{
-          background: "linear-gradient(135deg,#1B2B6B 0%,#2D4499 100%)",
-          borderRadius: 12, padding: "7px 16px",
-          display: "flex", alignItems: "center",
-          boxShadow: "0 3px 10px rgba(27,43,107,0.25)",
-        }}>
-          <span style={{ fontWeight: 900, fontSize: 18, color: "white", letterSpacing: "0.5px" }}>
-            CLAT<span style={{ color: "#F5A623" }}>ians</span>
-          </span>
-        </div>
+        <ClatLogo size="sm" showTagline={false} onWhite={true} />
 
-        {/* Action icons */}
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           {[
             { icon: <PhoneSvg />, badge: false },
@@ -73,9 +60,7 @@ export default function TopBar({ courseName = "CLAT 2026", onProfileClick }: Top
                 <span style={{
                   position: "absolute", top: 5, right: 5,
                   width: 8, height: 8, borderRadius: "50%",
-                  background: "#E63946",
-                  border: "1.5px solid white",
-                  boxShadow: "0 1px 3px rgba(230,57,70,0.4)",
+                  background: "#E63946", border: "1.5px solid white",
                 }} />
               )}
             </button>
@@ -86,29 +71,13 @@ export default function TopBar({ courseName = "CLAT 2026", onProfileClick }: Top
       {/* Row 2 — Course Chips */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
-          <span style={{
-            background: "#F3F4F6", borderRadius: 20,
-            padding: "4px 11px", fontSize: 11.5, fontWeight: 600, color: "#374151",
-          }}>12th</span>
-          <span style={{
-            background: "#EEF2FF", borderRadius: 20,
-            padding: "4px 11px", fontSize: 11.5, fontWeight: 700, color: "#1B2B6B",
-            border: "1px solid #C7D2FE",
-          }}>{courseName}</span>
-          <span style={{
-            background: "#DCFCE7", borderRadius: 20,
-            padding: "4px 11px", fontSize: 11.5, fontWeight: 800, color: "#15803D",
-            border: "1px solid #BBF7D0",
-          }}>FREE</span>
+          <span style={{ background: "#F3F4F6", borderRadius: 20, padding: "4px 11px", fontSize: 11.5, fontWeight: 600, color: "#374151" }}>12th</span>
+          <span style={{ background: "#FEF3E2", borderRadius: 20, padding: "4px 11px", fontSize: 11.5, fontWeight: 700, color: "#92400E", border: "1px solid #FDE68A" }}>{courseName}</span>
+          <span style={{ background: "#DCFCE7", borderRadius: 20, padding: "4px 11px", fontSize: 11.5, fontWeight: 800, color: "#15803D", border: "1px solid #BBF7D0" }}>FREE</span>
         </div>
-
-        <button style={{
-          display: "flex", alignItems: "center", gap: 5,
-          background: "none", border: "none", cursor: "pointer",
-          color: "#1B2B6B", fontSize: 12.5, fontWeight: 700,
-          padding: "4px 2px",
-        }}>
-          Change course <PlayArrow />
+        <button style={{ display: "flex", alignItems: "center", gap: 5, background: "none", border: "none", cursor: "pointer", color: "#C8860A", fontSize: 12.5, fontWeight: 700, padding: "4px 2px" }}>
+          Change course
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#C8860A"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </button>
       </div>
     </div>

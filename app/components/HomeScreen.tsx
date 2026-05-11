@@ -4,6 +4,8 @@ import { ChevronRight, CalendarIcon } from "./icons";
 
 interface HomeScreenProps {
   onNavigate: (screen: string) => void;
+  onToolClick?: (tool: string) => void;
+  onKnowMoreClick?: (item: string) => void;
 }
 
 /* ─── Inline SVG Tool Icons ─── */
@@ -45,10 +47,10 @@ const CurrentAffairsIcon = () => (
 );
 
 const tools = [
-  { Icon: VideoIcon, label: "Video\nLectures", bg: "linear-gradient(145deg,#7C3AED,#5B21B6)", shadow: "rgba(124,58,237,0.35)" },
-  { Icon: NotesIcon, label: "Study\nNotes", bg: "linear-gradient(145deg,#0891B2,#0E7490)", shadow: "rgba(8,145,178,0.35)" },
-  { Icon: PracticeIcon, label: "Practice\nQuestions", bg: "linear-gradient(145deg,#DB2777,#9D174D)", shadow: "rgba(219,39,119,0.35)" },
-  { Icon: CurrentAffairsIcon, label: "Current\nAffairs", bg: "linear-gradient(145deg,#D97706,#B45309)", shadow: "rgba(217,119,6,0.35)" },
+  { Icon: VideoIcon, label: "Video\nLectures", bg: "linear-gradient(145deg,#7C3AED,#5B21B6)", shadow: "rgba(124,58,237,0.35)", id:"videos" },
+  { Icon: NotesIcon, label: "Study\nNotes", bg: "linear-gradient(145deg,#0891B2,#0E7490)", shadow: "rgba(8,145,178,0.35)", id:"notes" },
+  { Icon: PracticeIcon, label: "Practice\nQuestions", bg: "linear-gradient(145deg,#DB2777,#9D174D)", shadow: "rgba(219,39,119,0.35)", id:"practice" },
+  { Icon: CurrentAffairsIcon, label: "Current\nAffairs", bg: "linear-gradient(145deg,#D97706,#B45309)", shadow: "rgba(217,119,6,0.35)", id:"current-affairs" },
 ];
 
 const liveClasses = [
@@ -80,10 +82,10 @@ const toppers = [
 ];
 
 const knowMore = [
-  { emoji: "✏️", label: "CLAT\nStudy Tools", color: "#7C3AED" },
-  { emoji: "🏆", label: "CLATians\nToppers", color: "#D97706" },
-  { emoji: "✨", label: "What's\nNew", color: "#0891B2" },
-  { emoji: "💡", label: "Tips &\nTricks", color: "#059669" },
+  { emoji: "✏️", label: "CLAT\nStudy Tools", color: "#7C3AED", id: "study-tools" },
+  { emoji: "🏆", label: "CLATians\nToppers", color: "#D97706", id: "toppers" },
+  { emoji: "✨", label: "What's\nNew", color: "#0891B2", id: "whats-new" },
+  { emoji: "💡", label: "Tips &\nTricks", color: "#059669", id: "tips" },
 ];
 
 const successStories = [
@@ -92,7 +94,7 @@ const successStories = [
   { name: "Priya Singh", college: "NALSAR", rank: "AIR 12", initials: "PS", color: "#7C3AED" },
 ];
 
-export default function HomeScreen({ onNavigate }: HomeScreenProps) {
+export default function HomeScreen({ onNavigate, onToolClick, onKnowMoreClick }: HomeScreenProps) {
   return (
     <div style={{ background: "#F0F4FF", paddingBottom: 20 }}>
 
@@ -177,7 +179,7 @@ export default function HomeScreen({ onNavigate }: HomeScreenProps) {
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 10 }}>
           {tools.map((tool, i) => (
-            <button key={i} style={{
+            <button key={i} onClick={() => onToolClick?.(tool.id)} style={{
               background: "white",
               borderRadius: 18,
               padding: "14px 6px 12px",
@@ -365,7 +367,7 @@ export default function HomeScreen({ onNavigate }: HomeScreenProps) {
         <h3 style={{ margin: "0 0 16px", fontSize: 18, fontWeight: 800, color: "#1A1A2E" }}>Know more about us</h3>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 10 }}>
           {knowMore.map((item, i) => (
-            <button key={i} style={{
+            <button key={i} onClick={() => onKnowMoreClick?.(item.id)} style={{
               display: "flex", flexDirection: "column", alignItems: "center", gap: 8,
               background: "none", border: "none", cursor: "pointer",
             }}>
